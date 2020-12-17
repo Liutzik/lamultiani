@@ -32,11 +32,12 @@
   border: 1px solid #eb4034;
 }
 
-canvas {
+img {
   display: flex;
   position: absolute;
-  left: 500px;
-  top: 50px;
+  text-align: center;
+  width: 200px;
+  height: 200px;
 }
 
 .poehali {
@@ -68,7 +69,7 @@ iframe {
     <button class="nuuita">Nu uita ca ILYYY (apasa-ma)</button>
     <button class="poehali">Apasa si poehali</button>
     <audio src='sound.mp3' autoplay></audio>
-    <canvas id="canvas" width="1000" height="850" x="600" y="130"></canvas>
+    <img src="heart.png" id='img'>
     
     <script type="text/javascript">
       let btnHppy = document.querySelector('.happybirth');
@@ -85,43 +86,9 @@ iframe {
 
       btnHppy.addEventListener('click', happyBirthday);
       btnLove.addEventListener('click', ily);
-    
-
-
-      function desen() {
-        canvas = document.getElementById("canvas");
-        var context = canvas.getContext("2d");
-        canvas.x = 150;
-        canvas.y = 150;
-
-
-        var w = 700, h = 700;
-
-        context.strokeStyle = "#000000";
-        context.strokeWeight = 3;
-        context.shadowOffsetX = 4.0;
-        context.shadowOffsetY = 4.0;
-        context.lineWidth = 10.0;
-        context.fillStyle = "#FF0000";
-        var d = Math.min(w, h);
-        var k = 120;
-
-        context.moveTo(k, k + d / 4);
-        context.quadraticCurveTo(k, k, k + d / 4, k);
-        context.quadraticCurveTo(k + d / 2, k, k + d / 2, k + d / 4);
-        context.quadraticCurveTo(k + d / 2, k, k + d * 3/4, k);
-        context.quadraticCurveTo(k + d, k, k + d, k + d / 4);
-        context.quadraticCurveTo(k + d, k + d / 2, k + d * 3/4, k + d * 3/4);
-        context.lineTo(k + d / 2, k + d);
-        context.lineTo(k + d / 4, k + d * 3/4);
-        context.quadraticCurveTo(k, k + d / 2, k, k + d / 4);
-        context.stroke();
-        context.fill();
-      }
-      desen();
 
       function poehali() {
-        document.getElementById('canvas').style.display='none';
+        document.getElementById('img').style.display='none';
       }
       btnPoehali.addEventListener('click', poehali);
     </script>
