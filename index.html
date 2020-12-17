@@ -5,43 +5,11 @@
     <title>Custom promise example</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <style type="text/css">
-      body {
-         background-color: #005722;
-        width: 100%;
-      }
-
-
-.happybirth, .nuuita, .lma {
-  width: 33%;
-  background-color: #eb4034; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-  margin: 1px;
-  height: 100%;
+body {
+  background-color: #005722;
 }
 
-.happybirth:hover, .nuuita:hover, .lma:hover, .poehali:hover{
-  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-  background-color: white;
-  color: black;
-  border: 1px solid #eb4034;
-}
-
-img {
-  display: flex;
-  position: absolute;
-  text-align: center;
-  width: 200px;
-  height: 200px;
-}
-
-.poehali {
+.lma {
   width: 99.7%;
   background-color: #eb4034; /* Green */
   border: none;
@@ -53,45 +21,112 @@ img {
   font-size: 16px;
   transition-duration: 0.4s;
   margin-top: 3px;
+  margin-bottom: 3px;
   height: 100%;
+  flex-wrap: wrap;
 }
 
+.happybirth, .nuuita{
+  width: 49.6%;
+  background-color: #eb4034; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  margin: 1px;
+  height: 100%;
+  flex-wrap: wrap;
+}
 
-iframe {
-  display: flex;
-  position: absolute;
+.happybirth:hover, .nuuita:hover, .lma:hover, .poehali:hover{
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: white;
+  color: black;
+  border: 1px solid #eb4034;
+}
+
+#img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 500px;
+  height: 500px;
+}
+
+div.dvi {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+div iframe {
+  width: 560px;
+  height: 300px;
+  left: 670px;
   opacity: 0;
+  transition: opacity 3s; 
+  top: 150px;
 }
+
+iframe.fade-in {
+  opacity: 1;
+}
+
     </style>
   </head>
   <body>
-    <button class="lma">Multi Ani Traiasca! (apasa-ma; zvuk)</button>
+    <button class="lma">I say happy birthday to you!!! (apasa-ma pe mine de intai de toate; zvuk)</button>
     <button class="happybirth">La Multi Ani!!! (apasa-ma)</button>
     <button class="nuuita">Nu uita ca ILYYY (apasa-ma)</button>
-    <button class="poehali">Apasa si poehali</button>
-    <audio src='sound.mp3' autoplay></audio>
     <img src="heart.png" id='img'>
-    
+    <div class='dvi' onclick="sunet2()">
+      <iframe id='frm' src="https://www.youtube.com/embed/mKiTAcXK6M4" allowfullscreen></iframe>
+    </div>
     <script type="text/javascript">
       let btnHppy = document.querySelector('.happybirth');
       let btnLove = document.querySelector('.nuuita');
       let btnSound = document.querySelector('.lma');
       let btnPoehali = document.querySelector('.poehali');
+      let sound = new Audio('sound.mp3');
+      let i = 0;
+
       function happyBirthday() {
         alert("LA MULTI ANI!!!!");
       }
       function ily() {
         alert("ILYYYYYYYYYYYYYYYYYYYY <333333333333333333333333333");
       }
-      
-
-      btnHppy.addEventListener('click', happyBirthday);
-      btnLove.addEventListener('click', ily);
 
       function poehali() {
         document.getElementById('img').style.display='none';
-      }
-      btnPoehali.addEventListener('click', poehali);
+            if (i === 0) {
+              alert('Daca vreai sa opresti sa migaiasca vidosul si muzica si sa te uiti la vidos, mai apasa inca o data tot pe acel buton :)'); 
+              sound.play();
+              var t = setInterval(function() {
+                var slideSource = document.querySelector('iframe');
+                slideSource.classList.toggle('fade-in');
+              }, 1000);
+              i++;
+            } else {
+              clearInterval(t);
+              document.querySelector('iframe').style.opacity = 1;
+              sound.pause();
+            }
+        }        
+      
+      
+      btnSound.addEventListener('click', poehali);
+      btnHppy.addEventListener('click', happyBirthday);
+      btnLove.addEventListener('click', ily);
+      
+
+      
+
+      
     </script>
   </body>
 </html>
